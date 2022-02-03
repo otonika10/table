@@ -1,0 +1,26 @@
+
+<div class="cont1">
+    <ul style="list-style: none;">
+        <li *ngFor="let i of data">
+            <table>
+            <tr>
+                <td>Description</td>
+                <td>Amount</td>
+            </tr>
+            <tr>
+                <td>{{i.description}} </td>
+                <td>{{i.amount}} </td>
+                <td><button (click)="remove(i.description)">remove</button></td>
+                <td><button (click)="current='reg'">Update</button></td>
+            </tr>
+            
+           
+            
+        </table>
+           <!--  <app-list-update *ngIf="current=='reg'"></app-list-update> -->
+           
+        </li>
+    </ul>
+    </div>
+    
+    

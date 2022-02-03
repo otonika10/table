@@ -1,0 +1,30 @@
+.container {
+    margin-top: 20px;
+    width: 400px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 20px;
+  
+    .item {
+      flex-basis: 40%;
+      
+    }
+    .it,.it1 {
+        
+        flex-basis: 50%;
+        font-size: 14px;
+        margin-left: 80px;
+    }
+    .it1{
+        margin-top:-8%;
+        margin-left: 53%;
+    }
+    input {
+      min-width: 200px;
+      min-height: 25px;
+      border-radius: 5px;
+    }
+    
+  }
+  
