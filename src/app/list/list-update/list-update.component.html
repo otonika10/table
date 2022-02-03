@@ -1,1 +1,16 @@
-<p>list-update works!</p>
+
+<form class="container form" autocomplete="off" [formGroup]='form'>
+    <div class="item label">
+      Description:
+    </div>
+    <div class="item input">
+      <input type="text" formControlName="describtion" />
+    </div>
+    <div class="item label">
+      Amount:
+    </div>
+    <div class="item input">
+      <input type="text"  formControlName="amount"/>
+    </div>
+    
+    <button (click)="update()">Submit</button>
