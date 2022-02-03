@@ -1,8 +1,10 @@
-<button (click)="current='table'">Table</button>
+<!-- <button (click)="current='table'">Table</button>
 <button (click)="current='add'">Add Rows</button>
-<app-form *ngIf="current=='add';else person"></app-form>
+<app-form *ngIf="current=='add';else person"></app-form> -->
 <!-- <app-list *ngIf="current=='person'"></app-list> -->
-<ng-template #person>
+<!-- <ng-template #person>
   <app-list></app-list>
-</ng-template>
+</ng-template> -->
 <router-outlet></router-outlet>
+<app-form></app-form>
+<app-list></app-list>
