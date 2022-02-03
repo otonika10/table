@@ -7,20 +7,29 @@ import { DataserviceService } from '../data.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  count:number= 0
-  current:'reg' | 'list' = 'list'
-  data:any = ""
-  constructor(private DataserviceService:DataserviceService) { 
-    this.data = this.DataserviceService.data
+  count: number = 0;
+  current: 'reg' | 'list' = 'list';
+  data: any = '';
+  constructor(private DataserviceService: DataserviceService) {
+    this.data = this.DataserviceService.data;
   }
 
-   remove(description:string){
-    if(confirm("This action will remove a user with this Description: "+description+" Are you sure?")){
-    this.data = this.data.filter((d: {description: string; })=>d.description!=description);
- 
+  remove(ind: number) {
+    if (
+      confirm(
+        'This action will remove a user with this Description: ' +
+          this.data[ind].description +
+          ' Are you sure?'
+      )
+    ) {
     }
-  } 
-  
+    console.log('data:', this.data);
+    const removedItem = this.data.splice(ind, 1);
+    console.log('removed item:', removedItem);
+    console.log('new data:', this.data);
+  }
+
+
   ngOnInit(): void {
   }
 
