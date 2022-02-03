@@ -6,17 +6,24 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
+import { ListUpdateComponent } from './list/list-update/list-update.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    ListComponent
+    ListComponent,
+    ListUpdateComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+
     
   ],
   providers: [],

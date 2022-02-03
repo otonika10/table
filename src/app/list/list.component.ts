@@ -8,10 +8,11 @@ import { DataserviceService } from '../data.service';
 })
 export class ListComponent implements OnInit {
   count: number = 0;
-  current: 'reg' | 'list' = 'list';
+  current: 'add' | 'table' = 'table';
   data: any = '';
   constructor(private DataserviceService: DataserviceService) {
     this.data = this.DataserviceService.data;
+    
   }
 
   remove(ind: number) {
@@ -23,14 +24,19 @@ export class ListComponent implements OnInit {
       )
     ) {
     }
+    
     console.log('data:', this.data);
     const removedItem = this.data.splice(ind, 1);
     console.log('removed item:', removedItem);
-    console.log('new data:', this.data);
+    //console.log('new data:', this.data);
+    
   }
 
 
   ngOnInit(): void {
+    
+    
+    
   }
 
 }

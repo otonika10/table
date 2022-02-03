@@ -1,22 +1,26 @@
 <div class="cont1">
     <ul style="list-style: none">
+        <table>
+            <tr>
+                <td>Description</td>
+                <td>Amount</td>
+            </tr>
+        </table>
       <li *ngFor="let i of data; let k = index">
         <table>
           <tr>
-            <td>Description</td>
-            <td>Amount</td>
-          </tr>
-          <tr>
             <td>{{ i.description }}</td>
             <td>{{ i.amount }}</td>
-            <td>
+            
               <button (click)="remove(k)">remove</button>
-            </td>
-            <td><button (click)="current = 'reg'">Update</button></td>
+            
+            <button (click)="current = 'add'">Update</button>
           </tr>
+          
         </table>
-        <!--  <app-list-update *ngIf="current=='reg'"></app-list-update> -->
+            <app-list-update *ngIf="current=='add'"></app-list-update>
       </li>
+
     </ul>
   </div>
   
