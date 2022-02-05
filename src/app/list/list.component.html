@@ -14,13 +14,38 @@
             
               <button (click)="remove(k)">remove</button>
             
-            <button (click)="current = 'add'">Update</button>
+            <button (click)=b(k)>Update</button>
           </tr>
           
         </table>
-            <app-list-update *ngIf="current=='add'"></app-list-update>
-      </li>
 
+      </li>
+                  <!-- <app-list-update *ngIf="current=='add'"></app-list-update> -->
+                  <li *ngFor="let i of data; let k = index">
+                    
+                    <div *ngIf="j==k">
+                      
+                  <form  class="container form" autocomplete="off" [formGroup]='form' *ngIf="current=='add'" >
+                    {{"Updates row: "+ k}}
+                    <div class="item label">
+                      Description:
+                    </div>
+                    <div class="item input">
+                      <input type="text" formControlName="describtion" />
+                    </div>
+                    <div class="item label">
+                      Amount:
+                    </div>
+                    <div class="item input">
+                      <input type="text"  formControlName="amount"/>
+                    </div>
+                    
+                    <button (click)="update(k)">Submit</button>
+                    
+                    </form>
+                    </div>
+                  </li>
+                    
     </ul>
   </div>
   
