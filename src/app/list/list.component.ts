@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormComponent } from '../form/form.component';
 import { DataserviceService } from '../data.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -42,8 +42,8 @@ export class ListComponent implements OnInit {
   }
   form = new FormGroup(
     {
-      describtion: new FormControl(''),
-      amount: new FormControl(''), 
+      describtion: new FormControl('',[Validators.required]),
+      amount: new FormControl('',[Validators.required]), 
     }
   )
   
@@ -53,8 +53,11 @@ counter=0
   b(ind:number){
     this.current = 'add'
     this.j = ind
+
   }
+
   update(ind:number){
+      if(this.form.valid){
           this.counter++
           for(let i in this.DataserviceService.data){ 
             console.log(ind);
@@ -64,13 +67,29 @@ counter=0
             //console.log(this.form.get('describtion')?.value);
             //console.log(this.DataserviceService.data[i].amount);
           }
+        }
       
   }
-  setvalue(){
+/*   setvalue(){
     for(let i in this.DataserviceService.data){ 
       this.form.controls['describtion'].setValue(this.DataserviceService.data[i].description)
       this.form.controls['amount'].setValue(this.DataserviceService.data[i].amount)
     }
+  } */
+  sumofAmount:number = 0
+  sum(ind:number){
+    
+    var str
+    for(let i in this.DataserviceService.data){
+      var untillUpd = this.DataserviceService.data[i].amount
+      str = String(this.DataserviceService.data[i].amount);
+      this.sumofAmount+=parseInt(str);
+      
+    }
+
+    console.log(this.sumofAmount);
+    
+    
   }
 
 }

@@ -14,7 +14,8 @@
             
               <button (click)="remove(k)">remove</button>
             
-            <button (click)=b(k)>Update</button>
+            <button (click)="b(k)">Update</button>
+            
           </tr>
           
         </table>
@@ -26,7 +27,7 @@
                     <div *ngIf="j==k">
                       
                   <form  class="container form" autocomplete="off" [formGroup]='form' *ngIf="current=='add'" >
-                    {{"Updates row: "+ k}}
+                    {{"Updates row: "+ k }}
                     <div class="item label">
                       Description:
                     </div>
@@ -43,8 +44,12 @@
                     <button (click)="update(k)">Submit</button>
                     
                     </form>
+                    <button (click)="sum(k)">Sum</button>
+                    {{"Sum of Amount: " + sumofAmount }}
                     </div>
+                    
                   </li>
+                  
                     
     </ul>
   </div>
