@@ -64,7 +64,7 @@ deletedDescribtion:any
           this.cond = 'true'
           
           for(let i in this.DataserviceService.data){ 
-            var deletedAmount = this.DataserviceService.data[ind].amount
+            this.deletedAmount = this.DataserviceService.data[ind].amount
             this.deletedDescribtion = this.DataserviceService.data[ind].description
             this.DataserviceService.data[ind].description=this.form.get('describtion')?.value
             this.DataserviceService.data[ind].amount=this.form.get('amount')?.value
@@ -81,7 +81,7 @@ deletedDescribtion:any
   undo(ind:number){
     //console.log(this.deletedAmount);
     //console.log(this.deletedDescribtion);
-    this.update(ind)
+    
     for(let i in this.DataserviceService.data){
       this.DataserviceService.data[ind].description=this.deletedDescribtion
       this.DataserviceService.data[ind].amount=this.deletedAmount
