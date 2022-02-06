@@ -10,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ListComponent implements OnInit {
   count: number = 0;
   current: 'add' | 'table' = 'table';
+  cond: 'true' | 'false' = 'false'
   j:any = 0
   data: any = '';
   constructor(private DataserviceService: DataserviceService) {
@@ -53,21 +54,25 @@ counter=0
   b(ind:number){
     this.current = 'add'
     this.j = ind
-
+    this.counter++
+    console.log(this.counter);
   }
 
   update(ind:number){
       if(this.form.valid){
+          this.cond = 'true'
           this.counter++
           for(let i in this.DataserviceService.data){ 
-            console.log(ind);
-            
             this.DataserviceService.data[ind].description=this.form.get('describtion')?.value
             this.DataserviceService.data[ind].amount=this.form.get('amount')?.value
             //console.log(this.form.get('describtion')?.value);
             //console.log(this.DataserviceService.data[i].amount);
           }
-        }
+        }else{
+        
+            alert("both values are mandatory to save update")
+          
+          }
       
   }
 /*   setvalue(){
@@ -82,6 +87,7 @@ counter=0
     var str
     for(let i in this.DataserviceService.data){
       var untillUpd = this.DataserviceService.data[i].amount
+      
       str = String(this.DataserviceService.data[i].amount);
       this.sumofAmount+=parseInt(str);
       

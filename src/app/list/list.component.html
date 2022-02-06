@@ -14,8 +14,8 @@
             
               <button (click)="remove(k)">remove</button>
             
-            <button (click)="b(k)">Update</button>
-            
+              <button  (click)="b(k)" [disabled]="cond=='true'">Update</button>
+              <button  (click)="cond='false'">Switch</button>
           </tr>
           
         </table>
@@ -41,7 +41,7 @@
                       <input type="text"  formControlName="amount"/>
                     </div>
                     
-                    <button (click)="update(k)">Submit</button>
+                    <button  (click)="update(k)">Save</button>
                     
                     </form>
                     <button (click)="sum(k)">Sum</button>
