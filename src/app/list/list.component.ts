@@ -57,12 +57,15 @@ counter=0
     this.counter++
     console.log(this.counter);
   }
-
+deletedAmount:any
+deletedDescribtion:any
   update(ind:number){
       if(this.form.valid){
           this.cond = 'true'
-          this.counter++
+          
           for(let i in this.DataserviceService.data){ 
+            var deletedAmount = this.DataserviceService.data[ind].amount
+            this.deletedDescribtion = this.DataserviceService.data[ind].description
             this.DataserviceService.data[ind].description=this.form.get('describtion')?.value
             this.DataserviceService.data[ind].amount=this.form.get('amount')?.value
             //console.log(this.form.get('describtion')?.value);
@@ -74,6 +77,16 @@ counter=0
           
           }
       
+  }
+  undo(ind:number){
+    //console.log(this.deletedAmount);
+    //console.log(this.deletedDescribtion);
+    this.update(ind)
+    for(let i in this.DataserviceService.data){
+      this.DataserviceService.data[ind].description=this.deletedDescribtion
+      this.DataserviceService.data[ind].amount=this.deletedAmount
+    }
+    
   }
 /*   setvalue(){
     for(let i in this.DataserviceService.data){ 
