@@ -63,7 +63,7 @@ counter=0
     
     return false
   }
-  update(ind:number){
+  save(ind:number){
       if(this.form.valid){
           this.cond1 = 'false'
           
