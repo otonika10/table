@@ -10,7 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ListComponent implements OnInit {
   count: number = 0;
   current: 'add' | 'table' = 'table';
+
   cond: 'true' | 'false' = 'false'
+  cond1: 'true' | 'false' = 'false'
   j:any = 0
   data: any = '';
   constructor(private DataserviceService: DataserviceService) {
@@ -47,20 +49,27 @@ checkbox = false;
   
 counter=0
   b(ind:number){
+    this.cond = 'true'
     this.current = 'add'
     this.j = ind
     this.counter++
     console.log(this.counter);
+    for(let i in this.DataserviceService.data){ 
+      this.form.controls['describtion'].setValue(this.DataserviceService.data[i].description)
+      this.form.controls['amount'].setValue(this.DataserviceService.data[i].amount)
+    }
   }
-deletedAmount:any
-deletedDescribtion:any
+  edit(){
+    
+    return false
+  }
   update(ind:number){
       if(this.form.valid){
-          this.cond = 'true'
+          this.cond1 = 'false'
           
           for(let i in this.DataserviceService.data){ 
-            this.deletedAmount = this.DataserviceService.data[ind].amount
-            this.deletedDescribtion = this.DataserviceService.data[ind].description
+            //this.deletedAmount = this.DataserviceService.data[ind].amount
+            //this.deletedDescribtion = this.DataserviceService.data[ind].description
             this.DataserviceService.data[ind].description=this.form.get('describtion')?.value
             this.DataserviceService.data[ind].amount=this.form.get('amount')?.value
             //console.log(this.form.get('describtion')?.value);
@@ -73,25 +82,28 @@ deletedDescribtion:any
           }
       
   }
-  undo(ind:number){
-    console.log(this.deletedAmount);
-    console.log(this.deletedDescribtion);
-    
+
+/*   undo(ind:number){
+    //console.log(this.deletedAmount);
+    //console.log(this.deletedDescribtion);
     for(let i in this.DataserviceService.data){
       this.DataserviceService.data[ind].description=this.deletedDescribtion
       this.DataserviceService.data[ind].amount=this.deletedAmount
     }
     
-  }
-/*   setvalue(){
+  } */
+   setvalue(){
     for(let i in this.DataserviceService.data){ 
       this.form.controls['describtion'].setValue(this.DataserviceService.data[i].description)
       this.form.controls['amount'].setValue(this.DataserviceService.data[i].amount)
+      
+      
+      
     }
-  } */
+  } 
   sumofAmount:number = 0
   sum(ind:number){
-    
+    this.sumofAmount = 0
     var str
     for(let i in this.DataserviceService.data){
       var untillUpd = this.DataserviceService.data[i].amount

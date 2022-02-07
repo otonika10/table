@@ -8,15 +8,14 @@
         </table>
       <li *ngFor="let i of data; let k = index">
         <table>
-          <tr>
-            <td>{{ i.description }}</td>
-            <td>{{ i.amount }}</td>
+          <tr  >
+            <td><input type="text" [disabled]="cond=='false'"  [value]="i.description" /></td>
+            <td><input type="text" [disabled]="cond=='false'"  [value]="i.amount" /></td>
             
               <button (click)="remove(k)">remove</button>
-            
-              <button  (click)="b(k)" [disabled]="cond=='true'">Update</button>
+              <button  (click)="b(k)" [disabled]="cond=='true'">Edit</button>
               <button  (click)="cond='false'">Switch</button>
-              <button  (click)="undo(k)" >Undo</button>
+
           </tr>
           
         </table>
@@ -42,7 +41,8 @@
                       <input type="text"  formControlName="amount"/>
                     </div>
                     
-                    <button  (click)="update(k)">Save</button>
+                    <button  (click)="save(k)">Save</button>
+                    <button  (click)="setvalue()" >Cancel</button>
                     
                     </form>
                     <button (click)="sum(k)">Sum</button>
