@@ -19,20 +19,15 @@ export class ListComponent implements OnInit {
   }
 
   remove(ind: number) {
-    if (
-      confirm(
-        'This action will remove a user with this Description: ' +
-          this.data[ind].description +
-          ' Are you sure?'
-      )
-    ) {
-    }
+    if (confirm('This action will remove a user with this Description: ' +this.data[ind].description +' Are you sure?')) {
+    
+    
     
     console.log('data:', this.data);
     const removedItem = this.data.splice(ind, 1);
     console.log('removed item:', removedItem);
     //console.log('new data:', this.data);
-    
+    }
   }
 
 
@@ -79,8 +74,8 @@ deletedDescribtion:any
       
   }
   undo(ind:number){
-    //console.log(this.deletedAmount);
-    //console.log(this.deletedDescribtion);
+    console.log(this.deletedAmount);
+    console.log(this.deletedDescribtion);
     
     for(let i in this.DataserviceService.data){
       this.DataserviceService.data[ind].description=this.deletedDescribtion
